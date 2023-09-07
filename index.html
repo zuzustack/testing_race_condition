@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing Race Condition</title>
+
+    <style>
+      body {
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+      }
+      button {
+        margin: auto;
+        display: block;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <button onclick="test()">Buy Ticket</button>
+
+    <script>
+      const test = () => {
+        fetch("https://8c3e-103-127-169-22.ngrok-free.app/test_race_condition", {
+            headers: {
+                'ngrok-skip-browser-warning': true
+            }
+        }).then(
+          (response) => {
+            response.json().then((v) => {
+                alert(v.message);
+            })
+          }
+        );
+      };
+    </script>
+  </body>
+</html>
